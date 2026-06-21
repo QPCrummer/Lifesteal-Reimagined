@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lifesteal_reimagined:item/heart_crystal"
+  }
+}

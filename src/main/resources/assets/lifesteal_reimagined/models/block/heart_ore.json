@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "lifesteal_reimagined:block/heart_ore"
+  }
+}

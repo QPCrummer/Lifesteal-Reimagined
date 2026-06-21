@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.qpcrummer.lifesteal_reimagined.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CrafterBlockMixin",
+    "CraftingMenuMixin",
+    "DisplayEntityAccessor",
+    "FlintAndSteelMixin",
+    "ItemDisplayInvoker",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "MilkMixin",
+    "MobEffectMixin",
+    "ServerPlayerGameModeMixin",
+    "ServerPlayerMixin",
+    "ServerPlayerServerAccessor"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

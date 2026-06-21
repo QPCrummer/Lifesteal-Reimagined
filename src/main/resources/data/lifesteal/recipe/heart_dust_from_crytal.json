@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lifesteal_reimagined:heart_crystal"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "lifesteal_reimagined:heart_dust"
+  }
+}
