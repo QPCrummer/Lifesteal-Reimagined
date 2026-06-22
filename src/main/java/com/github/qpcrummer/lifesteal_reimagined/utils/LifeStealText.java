@@ -6,38 +6,38 @@ import net.minecraft.server.MinecraftServer;
 
 public final class LifeStealText {
     public static final Component
-            FAILURE_UNKNOWN = Component.translatable("lifesteal.failure.unknown"), // For debug purposes
-            DEATH = Component.translatable("lifesteal.gameplay.death"),
-            MAX_HEALTH = Component.translatable("lifesteal.gameplay.max_health"),
-            LOW_HEALTH = Component.translatable("lifesteal.gameplay.low_health"),
-            INVALID_HEART_AMOUNT = Component.translatable("lifesteal.gameplay.invalid_heart_amount"),
-            GIFT_COMMAND_DISABLED = Component.translatable("lifesteal.command.gift.disabled"),
-            REVIVE_COMMAND_DISABLED = Component.translatable("lifesteal.command.revive.disabled"),
-            WITHDRAW_COMMAND_DISABLED = Component.translatable("lifesteal.command.withdraw.disabled"),
-            GIFT_NONE = Component.translatable("lifesteal.gift.none"),
-            GIFT_MULTIPLE = Component.translatable("lifesteal.gift.multiple"),
-            PREVENT_ATTACK = Component.translatable("lifesteal.gameplay.prevent_attack"),
-            REVIVE_HOLD = Component.translatable("lifesteal.revive.holding"),
-            BACK = Component.translatable("lifesteal.gui.back"),
-            NEXT = Component.translatable("lifesteal.gui.next"),
-            TITLE = Component.translatable("lifesteal.gui.title");
+            FAILURE_UNKNOWN = Component.translatable("lifesteal_reimagined.failure.unknown"), // For debug purposes
+            DEATH = Component.translatable("lifesteal_reimagined.gameplay.death"),
+            MAX_HEALTH = Component.translatable("lifesteal_reimagined.gameplay.max_health"),
+            LOW_HEALTH = Component.translatable("lifesteal_reimagined.gameplay.low_health"),
+            INVALID_HEART_AMOUNT = Component.translatable("lifesteal_reimagined.gameplay.invalid_heart_amount"),
+            GIFT_COMMAND_DISABLED = Component.translatable("lifesteal_reimagined.command.gift.disabled"),
+            REVIVE_COMMAND_DISABLED = Component.translatable("lifesteal_reimagined.command.revive.disabled"),
+            WITHDRAW_COMMAND_DISABLED = Component.translatable("lifesteal_reimagined.command.withdraw.disabled"),
+            GIFT_NONE = Component.translatable("lifesteal_reimagined.gift.none"),
+            GIFT_MULTIPLE = Component.translatable("lifesteal_reimagined.gift.multiple"),
+            PREVENT_ATTACK = Component.translatable("lifesteal_reimagined.gameplay.prevent_attack"),
+            REVIVE_HOLD = Component.translatable("lifesteal_reimagined.revive.holding"),
+            BACK = Component.translatable("lifesteal_reimagined.gui.back"),
+            NEXT = Component.translatable("lifesteal_reimagined.gui.next"),
+            TITLE = Component.translatable("lifesteal_reimagined.gui.title");
 
     private static final String
-            HEART_WITHDRAWN = "lifesteal.withdraw.heart",
-            HEART_WITHDRAWN_SINGLE = "lifesteal.withdraw.heart.single",
-            GIFT_RECEIVER_MAX_HEALTH = "lifesteal.gift.receiver.max_health",
-            GIFT_SUCCESS = "lifesteal.gift.success",
-            RECEIVE_SUCCESS = "lifesteal.gift.received",
-            PLAYER_IS_ALIVE = "lifesteal.player.alive",
-            PLAYER_IS_DEAD = "lifesteal.player.dead",
-            PLAYER_IS_YOU = "lifesteal.gift.self",
-            PLAYER_DOES_NOT_EXIST = "lifesteal.player.not_found",
-            REVIVEE = "lifesteal.player.revived.receiver",
-            REVIVER = "lifesteal.player.revived.sender",
-            SELF_REVIVE = "lifesteal.revive.self",
-            DEATH_TIME = "lifesteal.gameplay.death_time",
-            PREVENT_DAMAGE = "lifesteal.gameplay.prevent_damage",
-            ADMIN_REVIVE = "lifesteal.admin.revive";
+            HEART_WITHDRAWN = "lifesteal_reimagined.withdraw.heart",
+            HEART_WITHDRAWN_SINGLE = "lifesteal_reimagined.withdraw.heart.single",
+            GIFT_RECEIVER_MAX_HEALTH = "lifesteal_reimagined.gift.receiver.max_health",
+            GIFT_SUCCESS = "lifesteal_reimagined.gift.success",
+            RECEIVE_SUCCESS = "lifesteal_reimagined.gift.received",
+            PLAYER_IS_ALIVE = "lifesteal_reimagined.player.alive",
+            PLAYER_IS_DEAD = "lifesteal_reimagined.player.dead",
+            PLAYER_IS_YOU = "lifesteal_reimagined.gift.self",
+            PLAYER_DOES_NOT_EXIST = "lifesteal_reimagined.player.not_found",
+            REVIVEE = "lifesteal_reimagined.player.revived.receiver",
+            REVIVER = "lifesteal_reimagined.player.revived.sender",
+            SELF_REVIVE = "lifesteal_reimagined.revive.self",
+            DEATH_TIME = "lifesteal_reimagined.gameplay.death_time",
+            PREVENT_DAMAGE = "lifesteal_reimagined.gameplay.prevent_damage",
+            ADMIN_REVIVE = "lifesteal_reimagined.admin.revive";
 
     public static Component onRevivalText(DeathData data, MinecraftServer server) {
         return Component.translatable(REVIVEE, server.getProfileCache().get(data.reviverPlayerID).get().getName());

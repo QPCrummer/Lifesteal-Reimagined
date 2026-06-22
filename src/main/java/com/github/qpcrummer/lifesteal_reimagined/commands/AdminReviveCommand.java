@@ -38,7 +38,7 @@ public class AdminReviveCommand {
             source.sendFailure(LifeStealText.playerIsAlive(Component.nullToEmpty(receiver.getName())));
             return 0;
         }
-        PlayerUtils.revive(receiver.getName(), source.getServer(), source.getLevel(), source.getPlayer().blockPosition(), source.getPlayer(), null);
+        PlayerUtils.revive(receiver.getName(), source.getServer(), source.getLevel(), source.getPlayer().blockPosition(), source.getPlayer(), false, null);
         context.getSource().sendSuccess(() -> LifeStealText.adminRevive(receiver.getName()), true);
         return 1;
     }

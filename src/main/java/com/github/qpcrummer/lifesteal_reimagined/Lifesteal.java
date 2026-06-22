@@ -5,10 +5,7 @@ import com.github.qpcrummer.lifesteal_reimagined.commands.*;
 import com.github.qpcrummer.lifesteal_reimagined.data.DeathData;
 import com.github.qpcrummer.lifesteal_reimagined.effect.InvulnerableStatusEffect;
 import com.github.qpcrummer.lifesteal_reimagined.effect.ParticleAnimation;
-import com.github.qpcrummer.lifesteal_reimagined.effect.WithdrawRitualAnimation;
 import com.github.qpcrummer.lifesteal_reimagined.gamerules.LifeStealGamerules;
-import com.github.qpcrummer.lifesteal_reimagined.gamerules.WithdrawMethod;
-import com.github.qpcrummer.lifesteal_reimagined.items.HeartItem;
 import com.github.qpcrummer.lifesteal_reimagined.items.ModItems;
 import com.github.qpcrummer.lifesteal_reimagined.menu.ModMenu;
 import com.github.qpcrummer.lifesteal_reimagined.utils.PlayerInvulnerabilityInterface;
@@ -18,12 +15,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.scores.PlayerTeam;
 import net.minecraft.world.scores.Team;
 import net.neoforged.bus.api.IEventBus;
@@ -35,7 +29,6 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
@@ -146,30 +139,6 @@ public class Lifesteal {
         Player player = event.getEntity();
         if (player instanceof ServerPlayer serverPlayer) {
             PlayerUtils.handlePlayerJoin(serverPlayer);
-        }
-    }
-
-    @SubscribeEvent
-    public void onClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        Player player = event.getEntity();
-        if (player instanceof ServerPlayer serverPlayer) {
-            Level world = event.getLevel();
-            GameRules gameRules = world.getGameRules();
-            InteractionHand hand = event.getHand();
-            BlockHitResult hitResult = event.getHitVec();
-            if (gameRules.getRule(LifeStealGamerules.WITHDRAW_METHOD).get() == WithdrawMethod.ALTAR
-                    && serverPlayer.isShiftKeyDown()
-                    && hand == serverPlayer.getUsedItemHand()
-                    && serverPlayer.getItemInHand(hand).isEmpty()
-                    && HeartItem.isAltar((ServerLevel) world, hitResult.getBlockPos())) {
-                if (gameRules.getBoolean(LifeStealGamerules.DO_ALTAR_ANIMATIONS)) {
-                    if (PlayerUtils.handleWithdraw(serverPlayer, 1, false)) {
-                        com.github.qpcrummer.lifesteal_reimagined.Lifesteal.ANIMATIONS.add(new WithdrawRitualAnimation(serverPlayer, hitResult.getBlockPos()));
-                    }
-                } else {
-                    PlayerUtils.handleWithdraw(serverPlayer, 1, true);
-                }
-            }
         }
     }
 

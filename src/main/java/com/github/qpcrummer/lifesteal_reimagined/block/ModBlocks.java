@@ -26,6 +26,8 @@ public class ModBlocks {
             SoundType.STONE
     );
 
+    public static final DeferredHolder<Block, Block> ALTAR = registerAltar();
+
     private static DeferredHolder<Block, Block> register(String name, SoundType soundGroup) {
         DeferredHolder<Block, Block> blockHolder = BLOCKS.register(name, () -> new Block(
                 BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE)
@@ -36,6 +38,22 @@ public class ModBlocks {
 
 
         ITEMS.register(name, () -> new BlockItem(
+                blockHolder.get(),
+                new Item.Properties()
+        ));
+
+        return blockHolder;
+    }
+
+    private static DeferredHolder<Block, Block> registerAltar() {
+        DeferredHolder<Block, Block> blockHolder = BLOCKS.register("altar", () -> new AltarBlock(
+                BlockBehaviour.Properties.ofFullCopy(Blocks.BLAST_FURNACE)
+                        .strength(6.0f, 6.0f)
+                        .sound(SoundType.VAULT)
+        ));
+
+
+        ITEMS.register("altar", () -> new BlockItem(
                 blockHolder.get(),
                 new Item.Properties()
         ));

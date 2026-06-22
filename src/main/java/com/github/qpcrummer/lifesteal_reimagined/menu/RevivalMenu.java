@@ -3,8 +3,6 @@ package com.github.qpcrummer.lifesteal_reimagined.menu;
 import com.github.qpcrummer.lifesteal_reimagined.data.DeathData;
 import com.github.qpcrummer.lifesteal_reimagined.gamerules.LifeStealGamerules;
 import com.github.qpcrummer.lifesteal_reimagined.utils.PlayerUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -77,10 +75,7 @@ public class RevivalMenu extends AbstractContainerMenu {
             if (profile != null && profile.id().isPresent()) {
                 UUID deadPlayerUuid = profile.id().get();
                 if (DeathData.isPlayerDead(deadPlayerUuid, serverPlayer.level().getGameRules().getRule(LifeStealGamerules.AUTO_REVIVAL).get())) {
-                    net.minecraft.world.phys.BlockHitResult fakeHit = new net.minecraft.world.phys.BlockHitResult(
-                            net.minecraft.world.phys.Vec3.ZERO, Direction.DOWN, BlockPos.ZERO, true
-                    );
-                    PlayerUtils.revive(deadPlayerUuid, serverPlayer, new net.minecraft.world.item.context.UseOnContext(serverPlayer, this.hand, fakeHit));
+                    PlayerUtils.revive(deadPlayerUuid, serverPlayer, true, this.hand);
                     serverPlayer.closeContainer();
                 }
                 return;

@@ -15,13 +15,10 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -69,8 +66,7 @@ public class ReviveCommand {
             if (optionalGameProfile.isPresent()) {
                 GameProfile profile = optionalGameProfile.get();
                 if (DeathData.isPlayerDead(profile.getId(), 0)) {
-                    UseOnContext usageContext = new UseOnContext(source.getPlayer(), InteractionHand.MAIN_HAND, new BlockHitResult(source.getPlayer().position(), Direction.DOWN, source.getPlayer().blockPosition(), true));
-                    PlayerUtils.revive(profile.getId(), server, source.getLevel(), source.getPlayer().blockPosition(), source.getPlayer(), usageContext);
+                    PlayerUtils.revive(profile.getId(), server, source.getLevel(), source.getPlayer().blockPosition(), source.getPlayer(), true, InteractionHand.MAIN_HAND);
                 } else {
                     source.sendFailure(LifeStealText.playerIsAlive(Component.nullToEmpty(profile.getName())));
                     return 0;

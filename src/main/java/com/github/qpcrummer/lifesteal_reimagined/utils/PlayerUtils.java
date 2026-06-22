@@ -17,10 +17,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.RelativeMovement;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
@@ -330,11 +330,12 @@ public final class PlayerUtils {
      * Revives a player at the location of the reviver
      * @param reviveeId The UUID of the player being revived
      * @param reviver The player doing the reviving
-     * @param context If an item was used. Null if not
+     * @param fromItem If an item was used.
+     * @param hand The hand used. Null if not used
      * @return 0 if success, 1 if error, and 2 if the player was not found
      */
-    public static byte revive(UUID reviveeId, ServerPlayer reviver, UseOnContext context) {
-        return revive(reviveeId, reviver.level().getServer(), (ServerLevel) reviver.level(), reviver.blockPosition(), reviver, context);
+    public static byte revive(UUID reviveeId, ServerPlayer reviver, boolean fromItem, @Nullable InteractionHand hand) {
+        return revive(reviveeId, reviver.level().getServer(), (ServerLevel) reviver.level(), reviver.blockPosition(), reviver, fromItem, hand);
     }
 
     /**
@@ -344,11 +345,12 @@ public final class PlayerUtils {
      * @param world World that the revived player should spawn in
      * @param pos The position the revived player should spawn at
      * @param reviver The player doing the reviving
-     * @param context If an item was used. Null if not
+     * @param fromItem If an item was used.
+     * @param hand The hand used. Null if not used
      * @return 0 if success, 1 if error, and 2 if the player was not found
      */
-    public static byte revive(String playerName, MinecraftServer server, ServerLevel world, BlockPos pos, ServerPlayer reviver, @Nullable UseOnContext context) {
-        return revive(server.getPlayerList().getPlayerByName(playerName), null, playerName, server, world, pos, reviver, context);
+    public static byte revive(String playerName, MinecraftServer server, ServerLevel world, BlockPos pos, ServerPlayer reviver, boolean fromItem, @Nullable InteractionHand hand) {
+        return revive(server.getPlayerList().getPlayerByName(playerName), null, playerName, server, world, pos, reviver, fromItem, hand);
     }
 
     /**
@@ -358,18 +360,18 @@ public final class PlayerUtils {
      * @param world World that the revived player should spawn in
      * @param pos The position the revived player should spawn at
      * @param reviver The player doing the reviving
-     * @param context If an item was used. Null if not
+     * @param fromHeartItem If an item was used
+     * @param hand The hand used. Null if not used
      * @return 0 if success, 1 if error, and 2 if the player was not found
      */
-    public static byte revive(UUID reviveeId, MinecraftServer server, ServerLevel world, BlockPos pos, ServerPlayer reviver, UseOnContext context) {
-        return revive(server.getPlayerList().getPlayer(reviveeId), reviveeId, null, server, world, pos, reviver, context);
+    public static byte revive(UUID reviveeId, MinecraftServer server, ServerLevel world, BlockPos pos, ServerPlayer reviver, boolean fromHeartItem, @Nullable InteractionHand hand) {
+        return revive(server.getPlayerList().getPlayer(reviveeId), reviveeId, null, server, world, pos, reviver, fromHeartItem, hand);
     }
 
-    private static byte revive(ServerPlayer revivee, @Nullable UUID reviveeId, @Nullable String reviveeName, MinecraftServer server, ServerLevel world, BlockPos pos, ServerPlayer reviver, UseOnContext context) {
-        boolean fromHeartItem = context != null;
+    private static byte revive(ServerPlayer revivee, @Nullable UUID reviveeId, @Nullable String reviveeName, MinecraftServer server, ServerLevel world, BlockPos pos, ServerPlayer reviver, boolean fromHeartItem, @Nullable InteractionHand hand) {
         if (revivee != null) {
             if (reviveOnline(revivee, world, pos, reviver, fromHeartItem)) {
-                revived(reviver, context, revivee.getDisplayName());
+                revived(reviver, revivee.getDisplayName(), world, pos, hand);
                 return 0;
             }
             failed(reviver, pos, revivee.getDisplayName());
@@ -387,7 +389,7 @@ public final class PlayerUtils {
 
         if (profile.isPresent()) {
             if (reviveOffline(profile.get(), world, pos, reviver, fromHeartItem)) {
-                revived(reviver, context, Component.nullToEmpty(profile.get().getName()));
+                revived(reviver, Component.nullToEmpty(profile.get().getName()), world, pos, hand);
                 return 0;
             }
             failed(reviver, pos, Component.nullToEmpty(profile.get().getName()));
@@ -431,10 +433,10 @@ public final class PlayerUtils {
         return true;
     }
 
-    private static void revived(ServerPlayer reviver, @Nullable UseOnContext context, Component revived) {
-        if (context != null) {
-            successSound(context.getLevel(), context.getClickedPos());
-            context.getItemInHand().shrink(1);
+    private static void revived(ServerPlayer reviver, Component revived, ServerLevel level, BlockPos pos, @Nullable InteractionHand hand) {
+        if (hand != null) {
+            successSound(level, pos);
+            reviver.getItemInHand(hand).shrink(1);
             reviver.sendSystemMessage(LifeStealText.revived(revived), true);
         }
     }
