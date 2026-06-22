@@ -1,0 +1,54 @@
+{
+  "item.lifesteal.heart_dust": "Heart Dust",
+  "item.lifesteal.heart_crystal": "Heart Crystal",
+  "item.lifesteal.heart": "Heart",
+  "item.lifesteal.totem_of_rebirth": "Totem of Rebirth",
+
+  "block.lifesteal.heart_ore": "Heart Ore",
+  "block.lifesteal.deepslate_heart_ore": "Deepslate Heart Ore",
+  "block.lifesteal.altar": "Altar",
+
+  "lifesteal.admin.revive": "%s has been revived.",
+
+  "effect.lifesteal.invulnerability": "Invulnerability",
+
+  "lifesteal.failure.unknown": "Unknown fault. If you're the server admin, check logs.",
+
+  "lifesteal.gameplay.death": "You lost your last life. You now must be revived.",
+  "lifesteal.gameplay.death_time": "You lost your last life.\nYou will be revived in %s seconds.",
+  "lifesteal.gameplay.low_health": "You have insufficient hearts for this task.",
+  "lifesteal.gameplay.max_health": "You are already at the maximum number of hearts",
+  "lifesteal.gameplay.invalid_heart_amount": "Invalid heart amount inputted",
+  "lifesteal.gameplay.prevent_attack": "You cannot attack players while invulnerable",
+  "lifesteal.gameplay.prevent_damage":  "%s is invulnerable",
+
+  "lifesteal.heart.disabled": "Hearts are disabled.",
+
+  "lifesteal.withdraw.heart": "You withdrew %s hearts",
+  "lifesteal.withdraw.heart.single": "You withdrew a heart",
+
+  "lifesteal.gift.none": "Can't gift to nobody.",
+  "lifesteal.gift.multiple": "Can't gift to multiple folks at once.",
+  "lifesteal.gift.self": "%s is you, you can't gift to yourself!",
+  "lifesteal.gift.success": "Gifted %s hearts to %s.",
+  "lifesteal.gift.received": "Received %s hearts from %s.",
+  "lifesteal.gift.heart.single": "Gifted one heart",
+  "lifesteal.gift.receiver.max_health": "%s cannot accept this many hearts",
+
+  "lifesteal.player.alive": "%s is still alive",
+  "lifesteal.player.dead": "%s is dead",
+  "lifesteal.player.revived.sender": "You have revived %s",
+  "lifesteal.player.revived.receiver": "You've been resurrected from the grave by %s",
+  "lifesteal.player.not_found": "%s doesn't exist",
+
+  "lifesteal.revive.self": "%s is you, you can't revive yourself!",
+  "lifesteal.revive.holding": "You must be holding a heart to use this command",
+
+  "lifesteal.command.gift.disabled": "The gift command is disabled",
+  "lifesteal.command.revive.disabled": "The revive command is disabled",
+  "lifesteal.command.withdraw.disabled": "The withdraw command is disabled",
+
+  "lifesteal.gui.next": "Next",
+  "lifesteal.gui.back": "Back",
+  "lifesteal.gui.title": "Revive a Player"
+}

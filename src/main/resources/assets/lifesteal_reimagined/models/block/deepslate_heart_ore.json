@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "lifesteal_reimagined:block/deepslate_heart_ore_top",
-    "side": "lifesteal_reimagined:block/deepslate_heart_ore"
-  }
-}

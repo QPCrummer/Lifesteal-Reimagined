@@ -26,7 +26,7 @@
                   }
                 }
               ],
-              "name": "lifesteal_reimagined:deepslate_heart_ore"
+              "name": "lifesteal:deepslate_heart_ore"
             },
             {
               "type": "minecraft:item",
@@ -40,7 +40,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "lifesteal_reimagined:heart_dust"
+              "name": "lifesteal:heart_dust"
             }
           ]
         }
@@ -48,5 +48,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "lifesteal_reimagined:blocks/deepslate_heart_ore"
+  "random_sequence": "lifesteal:blocks/deepslate_heart_ore"
 }
