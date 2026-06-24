@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "H": {
+      "item": "lifesteal:heart"
+    },
+    "C": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "pattern": [
+    "CHC",
+    " C ",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "lifesteal:altar"
+  }
+}

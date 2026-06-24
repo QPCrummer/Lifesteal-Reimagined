@@ -4,13 +4,13 @@
     "#": {
       "item": "lifesteal:heart_crystal"
     },
-    "X": {
-      "item": "minecraft:totem_of_undying"
+    "N": {
+      "item": "minecraft:netherite_ingot"
     }
   },
   "pattern": [
     " # ",
-    "#X#",
+    "#N#",
     " # "
   ],
   "result": {
