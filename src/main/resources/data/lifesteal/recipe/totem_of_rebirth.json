@@ -1,10 +1,15 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    "minecraft:totem_of_undying",
-    "lifesteal:heart"
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "lifesteal:heart"
+    }
   ],
   "result": {
+    "count": 1,
     "id": "lifesteal:totem_of_rebirth"
   }
 }
